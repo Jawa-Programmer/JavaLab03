@@ -2,6 +2,8 @@ package ru.jawaprogrammer.lab03.utils;
 
 import ru.jawaprogrammer.lab03.entities.Employee;
 import ru.jawaprogrammer.lab03.entities.EmployeeBuilder;
+import ru.jawaprogrammer.lab03.entities.Gender;
+import ru.jawaprogrammer.lab03.entities.Role;
 
 import java.util.*;
 
@@ -141,20 +143,20 @@ public class EmployeeGenerator {
             builder.setEmail(mail.toString());
             builder.setCity(getRandomFromArray(COMMON_CITIES));
             builder.setAddress(new StringBuilder(getRandomFromArray(COMMON_STREETS)).append(", ").append(rand.nextInt(50) + 1).toString());
-            builder.setRole(Employee.Role.values()[rand.nextInt(3)]);
+            builder.setRole(Role.values()[rand.nextInt(3)]);
             builder.setDept(rand.nextInt(5) + 1);
             builder.setAge(rand.nextInt(30) + 20);
             if (rand.nextBoolean())// мужчина
             {
-                builder.setGender(Employee.Gender.MALE);
+                builder.setGender(Gender.MALE);
                 builder.setGivenName(getRandomFromArray(MALE_NAMES));
                 builder.setSurName(getRandomFromArray(MALE_SURNAMES));
             } else { // женщина
-                builder.setGender(Employee.Gender.FEMALE);
+                builder.setGender(Gender.FEMALE);
                 builder.setGivenName(getRandomFromArray(FEMALE_NAMES));
                 builder.setSurName(getRandomFromArray(FEMALE_SURNAMES));
             }
-            ret.add(builder.create());
+            ret.add(builder.build());
         }
         return ret;
     }

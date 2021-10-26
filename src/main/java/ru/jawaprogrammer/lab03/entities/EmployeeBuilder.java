@@ -7,7 +7,18 @@ public class EmployeeBuilder {
         employee = new Employee();
     }
 
-    public Employee create() {
+    public Employee build() {
+        if (employee.getGender() == null ||
+                employee.getSurName() == null ||
+                employee.getGivenName() == null ||
+                employee.getAddress() == null ||
+                employee.getCity() == null ||
+                employee.getEmail() == null ||
+                employee.getRole() == null ||
+                employee.getState() == null ||
+                employee.getPhone() == null
+        )
+            throw new RuntimeException("Объект был инициализирован не полностью");
         return employee;
     }
 
@@ -26,12 +37,12 @@ public class EmployeeBuilder {
         return this;
     }
 
-    public EmployeeBuilder setGender(Employee.Gender gender) {
+    public EmployeeBuilder setGender(Gender gender) {
         employee.setGender(gender);
         return this;
     }
 
-    public EmployeeBuilder setRole(Employee.Role role) {
+    public EmployeeBuilder setRole(Role role) {
         employee.setRole(role);
         return this;
     }
